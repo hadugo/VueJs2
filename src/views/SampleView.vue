@@ -6,10 +6,7 @@
 <template>
     <div>
         <div>
-        부서 : <CodeHelpComp ref="cmpDepart"/>
-        </div>
-        <div>
-        직급 : <CodeHelpComp ref="cmpTitle"/>
+        부서 : <CodeHelpComp ref="cmpDepart" :args="departValues"/>
         </div>
     </div>
 </template>
@@ -27,6 +24,10 @@ export default {
 
     data() {
         return {
+            departValues : {
+                code : "D011",
+                name : "관리부",
+            },
         };
     },
 };
