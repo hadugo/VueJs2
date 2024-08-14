@@ -6,7 +6,12 @@
 <template>
     <div>
         <div>
-        부서 : <CodeHelpComp ref="cmpDepart" :args="departValues"/>
+        부서 : 
+        <CodeHelpComp 
+            ref="cmpDepart" 
+            :args="departValues"
+            @selected="cmpSelected"
+        />
         </div>
     </div>
 </template>
@@ -29,6 +34,12 @@ export default {
                 name : "관리부",
             },
         };
+    },
+
+    methods : {
+        cmpSelected(data){
+            console.log(`선택 : ${data.code} - ${data.name}`)
+        },
     },
 };
 </script>

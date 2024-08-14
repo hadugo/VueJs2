@@ -7,6 +7,7 @@
     <input ref="edCode" v-model="iniVal.code">
     <input ref="edName" v-model="iniVal.name">
     <button ref="btnSrch">...</button>
+    <button @click="btnClick">확인</button>
 </template>
 
 <script>
@@ -23,7 +24,9 @@
                 }
             }
         },
-        
+
+        emits: ['selected'], // 추가된 부분
+
         data() {
             return {
                 iniVal : {
@@ -33,9 +36,20 @@
             }
         },
 
+        methods : {
+            btnClick(){
+                const result = {
+                    code : this.iniVal.code,
+                    name : this.iniVal.name,
+                }
+                this.$emit("selected", result)
+            },
+        },
+
         mounted() {
             this.iniVal.code = this.args.code
             this.iniVal.name = this.args.name
-        }
+        },
+        
     }
 </script>

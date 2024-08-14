@@ -585,7 +585,7 @@
                 var selectedRows = gridApi.value.getSelectedRows();
                 .................................. 생략 ..............................
                 const selectedRow = selectedRows[0]
-                emit('rowSelect', selectedRow)
+                $emit('rowSelect', selectedRow)
             }
             .................................... 생략 ................................
         },
