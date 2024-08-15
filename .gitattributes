@@ -2,4 +2,5 @@ src/App.vue eol=lf
 src/router/index.js eol=lf
 vue.config.js eol=lf
 node_modules/.package-lock.json eol=lf
-package-lock.json
+package-lock.json eol=lf
+src/store/index.js eol=lf
