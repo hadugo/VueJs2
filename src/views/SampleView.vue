@@ -10,14 +10,13 @@
         <CodeHelpComp 
             ref="cmpDepart" 
             :args="departValues"
+            @selected="cmpSelected"
         />
-        </div>
-        <div> 
-            &nbsp;
-        </div>
+        <div>{{ result }}</div>
         <div>
             결과 : 
             <ResultComp/>
+        </div>
         </div>
     </div>
 </template>
@@ -32,8 +31,10 @@ export default {
 
     components: {
         CodeHelpComp : CodeHelpComponent,
-        ResultComp : ResultComponent
+        ResultComp : ResultComponent,
     },
+    
+    emits: ['selected'], // 이 부분 추가
 
     data() {
         return {
@@ -41,7 +42,14 @@ export default {
                 code : "D011",
                 name : "관리부",
             },
+            result : " ",
         };
+    },
+
+    methods : {
+        cmpSelected(data){
+            this.result = `${data.code} - ${data.name}`
+        },
     },
 };
 </script>

@@ -4,15 +4,18 @@
 =================================================
 -->
 <template>
-    <input ref="edCode" v-model="iniVal.code">
-    <input ref="edName" v-model="iniVal.name">
-    <button ref="btnSrch">...</button>
-    <button @click="btnClick">확인</button>
+    <div style="display: inline-block;">
+        <input ref="edCode" v-model="iniVal.code">
+        <input ref="edName" v-model="iniVal.name">
+        <button ref="btnSrch">...</button>
+        <button @click="btnClick">확인</button>
+    </div>
 </template>
 
 <script>
 
     import eventBus from '@/event/eventbus';
+    import mittBus from '@/event/mittBus';
 
     export default {
         props : {
@@ -43,10 +46,11 @@
                     code : this.iniVal.code,
                     name : this.iniVal.name,
                 }
-//                this.$emit("selected", result)
+                this.$emit("selected", result)
                 if (eventBus['setResult']) {
                     eventBus['setResult'](result);
                 }
+                mittBus.emit('showResult', result)
             },
         },
 
