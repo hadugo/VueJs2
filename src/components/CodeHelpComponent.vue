@@ -11,6 +11,9 @@
 </template>
 
 <script>
+
+    import eventBus from '@/event/eventbus';
+
     export default {
         props : {
             args : {
@@ -24,8 +27,6 @@
                 }
             }
         },
-
-        emits: ['selected'], // 추가된 부분
 
         data() {
             return {
@@ -42,7 +43,10 @@
                     code : this.iniVal.code,
                     name : this.iniVal.name,
                 }
-                this.$emit("selected", result)
+//                this.$emit("selected", result)
+                if (eventBus['setResult']) {
+                    eventBus['setResult'](result);
+                }
             },
         },
 

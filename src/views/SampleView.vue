@@ -10,8 +10,14 @@
         <CodeHelpComp 
             ref="cmpDepart" 
             :args="departValues"
-            @selected="cmpSelected"
         />
+        </div>
+        <div> 
+            &nbsp;
+        </div>
+        <div>
+            결과 : 
+            <ResultComp/>
         </div>
     </div>
 </template>
@@ -19,12 +25,14 @@
 <script>
 
 import CodeHelpComponent from '@/components/CodeHelpComponent.vue';
+import ResultComponent from '@/components/ResultComponent.vue';
 
 export default {
     name: 'SampleVuew',
 
     components: {
         CodeHelpComp : CodeHelpComponent,
+        ResultComp : ResultComponent
     },
 
     data() {
@@ -34,12 +42,6 @@ export default {
                 name : "관리부",
             },
         };
-    },
-
-    methods : {
-        cmpSelected(data){
-            console.log(`선택 : ${data.code} - ${data.name}`)
-        },
     },
 };
 </script>
