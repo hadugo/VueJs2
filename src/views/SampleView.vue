@@ -39,8 +39,9 @@ export default {
     data() {
         return {
             departValues : {
-                code : "D011",
-                name : "관리부",
+                type : 'DEPT',
+                code : 'D011',
+                name : '관리부',
             },
             result : " ",
         };
@@ -48,7 +49,7 @@ export default {
 
     methods : {
         cmpSelected(data){
-            this.result = `${data.code} - ${data.name}`
+            this.result = `${data.type} - ${data.code} - ${data.name}`
         },
     },
 };

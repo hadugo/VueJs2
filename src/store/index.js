@@ -1,35 +1,50 @@
+/* ================================================= *
+ * src\store\index.js
+ * ================================================= */
 
 const storeOptions = {
 
   state: {
     // state : store에서 취급하는 데이터
-
+    codeList : [
+      {type : 'DEPT', code : 'D111', name : '관리부'},
+      {type : 'DEPT', code : 'D012', name : '영업부'},
+      {type : 'DEPT', code : 'D021', name : '개발부'},
+      {type : 'DEPT', code : 'D022', name : '생산부'},
+      {type : 'TITL', code : 'T111', name : '대표'},
+      {type : 'TITL', code : 'T012', name : '부장'},
+      {type : 'TITL', code : 'T021', name : '과장'},
+      {type : 'TITL', code : 'T022', name : '사원'},
+    ],
   },
 
   getters: {
-    // getters : Computed와 동일한 기능, 계산된 상태(Computed)의 데이터
-
+    getNamedList(state){
+      let deptList = []
+      let titlList = []
+      state.codeList.forEach(
+        ele => {
+          const newEle = {
+            type : ele.type,
+            code : ele.code,
+            name : ele.name,
+            codeName : `[ ${ele.code} ] ${ele.name}`,
+          }
+          if(ele.type == 'DEPT') {
+            deptList.push(newEle)
+          }
+          if(ele.type == 'TITL') {
+            titlList.push(newEle)
+          }
+        }
+      )
+      const result = {
+        DEPT : deptList,
+        TITL : titlList,
+      }
+      return result
+    }
   },
-  
-  mutations: {
-    // mutations와 actions는 methods와 동일한 기능
-    // state에서 선언된 데이터는 오직 mutations에서만 변형이 가능
-  },
-  
-  actions: {
-    // mutations와 actions는 methods와 동일한 기능
-    // state에서 선언된 데이터를 직접 불러올 수 없고 context객체를 총하여 불러올 수 있다.
-    // context에서는 state, getters, mutations를 활용할 수  있는 정보가 들어 있다.
-    // [ 예 ]
-    // context.mutations --- ( x )
-    // context.commit('mutations 이름', payload) --- ( o )
-
-
-  },
-  
-  modules: {
-    // 여러개로 나뉘어져 있는 vuex모듈을 하나로 묶을때 사용
-  }
 
 }
 
