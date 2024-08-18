@@ -1,6 +1,6 @@
 /* ================================================= *
- * src\store\deptStorage.js
- * ================================================= */
+ * src\store\deptStorage.js
+ * ================================================= */
 const storeOptions = {
     namespaced: true, // 네임스페이스 사용
 
@@ -11,6 +11,7 @@ const storeOptions = {
             { type: 'DEPT', code: 'D021', name: '개발부' },
             { type: 'DEPT', code: 'D022', name: '생산부' },
         ],
+        a : 'aaa',
     },
 
     getters: {
@@ -33,6 +34,7 @@ const storeOptions = {
             console.log(rootGetters['deptStorage/getNamedList']);
             console.log(rootGetters['titlStorage/getNamedList']);
             ** ================================================== */
+            state.a = "lllll"
             return state.codeList.map(ele => ({
                 type: ele.type,
                 code: ele.code,

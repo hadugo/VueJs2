@@ -1,12 +1,12 @@
 /* ================================================= *
  * src\store\index.js
  * ================================================= */
-import deptStorage from './deptStore';
-import titlStorage from './titlStore';
+import deptStore from './deptStore';
+import titlStore from './titlStore';
 const storeOptions = {
     modules: {
-        deptStorage: deptStorage,
-        titlStorage: titlStorage,
+        deptStore: deptStore,
+        titlStore: titlStore,
     },
     state: {}, // 필요에 따라 초기 상태 정의
     getters: {
@@ -25,8 +25,8 @@ const storeOptions = {
                 console.log(rootGetters['titlStorage/getNamedList']);
             }
             ** ================================================== */
-            const deptNamedList = getters["deptStorage/getNamedList"]
-            const titlNamedList = getters["titlStorage/getNamedList"]
+            const deptNamedList = getters["deptStore/getNamedList"]
+            const titlNamedList = getters["titlStore/getNamedList"]
             return {
                 DEPT: deptNamedList, // dept 모듈의 getNamedList 호출
                 TITL: titlNamedList, // titl 모듈의 getNamedList 호출
@@ -37,7 +37,7 @@ const storeOptions = {
     actions: {},
 };
 /* ===================================================================== *
- * vuex3에서
+ * vuex3에서 
  * ===================================================================== *
 import Vue from 'vue';
 import Vuex from 'vuex';
@@ -50,4 +50,3 @@ export default store;
 import { createStore } from 'vuex';
 const store = createStore(storeOptions);
 export default store;
-
